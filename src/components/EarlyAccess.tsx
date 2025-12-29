@@ -47,7 +47,7 @@ export default function EarlyAccess() {
   };
 
   return (
-    <section id="early-access" className="py-24 bg-gradient-to-br from-orange-600 via-amber-600 to-orange-500 relative overflow-hidden">
+    <section id="early-access" className="py-24 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-20">
         <motion.div
@@ -116,14 +116,14 @@ export default function EarlyAccess() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="din@email.se"
                   disabled={status === "loading" || status === "success"}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-stone-900 placeholder:text-stone-400 border-0 focus:ring-4 focus:ring-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 border-0 focus:ring-4 focus:ring-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg"
                   required
                 />
               </div>
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="px-8 py-4 rounded-xl bg-stone-900 text-white font-semibold hover:bg-stone-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl whitespace-nowrap text-lg"
+                className="px-8 py-4 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl whitespace-nowrap text-lg"
               >
                 {status === "loading" ? (
                   <>
@@ -188,5 +188,3 @@ export default function EarlyAccess() {
     </section>
   );
 }
-
-

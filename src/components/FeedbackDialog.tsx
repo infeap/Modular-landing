@@ -2,11 +2,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 
 interface FeedbackDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  defaultMessage?: string;
 }
 
 const categories = [
@@ -16,13 +17,20 @@ const categories = [
   { value: "other", label: "Övrigt" },
 ];
 
-export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps) {
+export default function FeedbackDialog({ isOpen, onClose, defaultMessage }: FeedbackDialogProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     category: "feature",
     message: "",
   });
+  
+  // Update message when defaultMessage changes or dialog opens
+  useEffect(() => {
+    if (isOpen && defaultMessage) {
+      setFormData(prev => ({ ...prev, message: defaultMessage }));
+    }
+  }, [isOpen, defaultMessage]);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -91,7 +99,7 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
           >
             <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
               {/* Header */}
-              <div className="relative bg-gradient-to-r from-orange-600 to-amber-600 px-5 py-4 text-white">
+              <div className="relative bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-4 text-white">
                 <button
                   onClick={onClose}
                   className="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/20 transition-colors"
@@ -111,7 +119,7 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
               <form onSubmit={handleSubmit} className="p-5 space-y-4">
                 {/* Name (optional) */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                     Namn (valfritt)
                   </label>
                   <input
@@ -121,13 +129,13 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Ditt namn"
                     disabled={status === "loading" || status === "success"}
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50"
                   />
                 </div>
 
                 {/* Email (optional) */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                     E-post (valfritt)
                   </label>
                   <input
@@ -137,13 +145,13 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="din@email.se"
                     disabled={status === "loading" || status === "success"}
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50"
                   />
                 </div>
 
                 {/* Category */}
                 <div>
-                  <label htmlFor="category" className="block text-sm font-medium text-stone-700 mb-2">
+                  <label htmlFor="category" className="block text-sm font-medium text-slate-700 mb-2">
                     Kategori
                   </label>
                   <select
@@ -151,7 +159,7 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     disabled={status === "loading" || status === "success"}
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-stone-900 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50"
                   >
                     {categories.map((cat) => (
                       <option key={cat.value} value={cat.value}>
@@ -163,7 +171,7 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-stone-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
                     Meddelande *
                   </label>
                   <textarea
@@ -175,11 +183,11 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
                     maxLength={maxChars}
                     disabled={status === "loading" || status === "success"}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all disabled:opacity-50 resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50 resize-none"
                   />
                   <div className="flex justify-between items-center mt-1">
-                    <span className="text-xs text-stone-500">* Obligatoriskt</span>
-                    <span className={`text-xs ${charCount > maxChars * 0.9 ? "text-orange-500" : "text-stone-500"}`}>
+                    <span className="text-xs text-slate-500">* Obligatoriskt</span>
+                    <span className={`text-xs ${charCount > maxChars * 0.9 ? "text-blue-500" : "text-slate-500"}`}>
                       {charCount}/{maxChars}
                     </span>
                   </div>
@@ -215,14 +223,14 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
                     type="button"
                     onClick={onClose}
                     disabled={status === "loading"}
-                    className="flex-1 px-6 py-3 rounded-lg border border-stone-300 text-stone-700 font-medium hover:bg-stone-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-6 py-3 rounded-lg border border-slate-300 text-slate-700 font-medium hover:bg-slate-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Avbryt
                   </button>
                   <button
                     type="submit"
                     disabled={status === "loading" || status === "success"}
-                    className="flex-1 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {status === "loading" ? (
                       <>
@@ -250,5 +258,3 @@ export default function FeedbackDialog({ isOpen, onClose }: FeedbackDialogProps)
     </AnimatePresence>
   );
 }
-
-

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { MessageSquare } from "lucide-react";
 import { useState } from "react";
 import FeedbackDialog from "./FeedbackDialog";
 
@@ -18,7 +18,7 @@ export default function FeedbackButton() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-300"
+        className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300"
         aria-label="Ge feedback"
       >
         <motion.div
@@ -40,5 +40,3 @@ export default function FeedbackButton() {
     </>
   );
 }
-
-

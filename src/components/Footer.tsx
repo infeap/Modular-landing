@@ -1,6 +1,7 @@
 "use client";
 
 import { Github, Twitter, Linkedin, Mail, Heart } from "lucide-react";
+import Image from "next/image";
 
 const navigation = {
   product: [
@@ -46,16 +47,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-stone-900 text-stone-300">
+    <footer className="bg-slate-900 text-slate-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">M</span>
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/assets/Modular_logo_icon.png"
+                alt="Modular"
+                width={40}
+                height={40}
+                className="w-10 h-10"
+              />
               <span
                 className="text-2xl font-bold text-white"
                 style={{ fontFamily: "var(--font-space-grotesk)" }}
@@ -63,7 +68,7 @@ export default function Footer() {
                 Modular
               </span>
             </div>
-            <p className="text-sm text-stone-400 leading-relaxed mb-4">
+            <p className="text-sm text-slate-400 leading-relaxed mb-4">
               Produktivitetsverktyg för installationsbranschen. Dokumentmallar, kabeldimensioneringar, effektberäkningar och mycket mer.
             </p>
             {/* Social Links */}
@@ -72,7 +77,7 @@ export default function Footer() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="p-2 rounded-lg bg-stone-800 hover:bg-stone-700 transition-colors"
+                  className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors"
                   aria-label={item.name}
                 >
                   <item.icon className="w-5 h-5" />
@@ -89,7 +94,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-sm text-gray-400 hover:text-white transition-colors"
+                    className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     {item.name}
                   </a>
@@ -106,7 +111,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <a
                   href={item.href}
-                  className="text-sm text-stone-400 hover:text-white transition-colors"
+                  className="text-sm text-slate-400 hover:text-white transition-colors"
                 >
                   {item.name}
                 </a>
@@ -123,7 +128,7 @@ export default function Footer() {
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="text-sm text-stone-400 hover:text-white transition-colors"
+                  className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     {item.name}
                   </a>
@@ -134,12 +139,12 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-stone-800 pt-8">
+        <div className="border-t border-slate-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-stone-400">
+            <p className="text-sm text-slate-400">
               © {currentYear} Modular. Alla rättigheter förbehållna.
             </p>
-            <p className="text-sm text-stone-400 flex items-center gap-1">
+            <p className="text-sm text-slate-400 flex items-center gap-1">
               Gjord med <Heart className="w-4 h-4 text-red-500 fill-red-500" /> i Sverige
             </p>
           </div>
@@ -148,5 +153,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-

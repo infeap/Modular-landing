@@ -47,7 +47,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-stone-50">
+    <section id="faq" className="py-24 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -57,16 +57,16 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 mb-6">
             <HelpCircle className="w-8 h-8 text-white" />
           </div>
           <h2
             className="text-4xl sm:text-5xl font-bold mb-4"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            <span className="text-stone-900">Vanliga frågor</span>
+            <span className="text-slate-900">Vanliga frågor</span>
           </h2>
-          <p className="text-lg text-stone-600">
+          <p className="text-lg text-slate-600">
             Hittar du inte svaret? Kontakta oss via feedback-knappen!
           </p>
         </motion.div>
@@ -86,13 +86,13 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-stone-50 transition-colors"
+                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-50 transition-colors"
               >
-                <span className="font-semibold text-lg text-stone-900 pr-4">
+                <span className="font-semibold text-lg text-slate-900 pr-4">
                   {faq.question}
                 </span>
                 <motion.div
@@ -100,7 +100,7 @@ export default function FAQ() {
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="w-6 h-6 text-stone-500" />
+                  <ChevronDown className="w-6 h-6 text-slate-500" />
                 </motion.div>
               </button>
 
@@ -113,7 +113,7 @@ export default function FAQ() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-5 text-stone-600 leading-relaxed">
+                    <div className="px-6 pb-5 text-slate-600 leading-relaxed">
                       {faq.answer}
                     </div>
                   </motion.div>
@@ -131,12 +131,12 @@ export default function FAQ() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-stone-600 mb-4">
+          <p className="text-slate-600 mb-4">
             Har du fler frågor?
           </p>
           <a
             href="#early-access"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-orange-600 to-amber-600 text-white font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             Registrera dig för early access
           </a>
@@ -145,5 +145,3 @@ export default function FAQ() {
     </section>
   );
 }
-
-
