@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modular - Produktivitetsverktyg för installationsbranschen
+
+En modern landing page för Modular, en modulär applikation utvecklad för elektriker och installatörer.
+
+## Om Modular
+
+Modular är den kompletta lösningen för installationsbranschen. Från anbudsprocess till färdig entreprenad - med moduler för:
+
+- 📄 **Dokumentmallar** - Anbudshandlingar, uppdragsbekräftelser och mer
+- ⚡ **Kabeldimensionering** - Enligt SS 436 40 00
+- 🔌 **Effektberäkningar** - Anslutningsvärde och säkringsstorlekar  
+- 📋 **Gruppförteckningar** - Automatisk generering för elcentraler
+- 📂 **Mappstruktur** - Organisera projekt effektivt
+- ⏱️ **Pomodoro Timer** - Produktivitetsspårning
 
 ## Getting Started
 
@@ -16,9 +29,24 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **Lucide React** - Icons
+
+## Features
+
+- ✅ Modern, ljus design anpassad för professionella användare
+- ✅ Responsiv layout för alla enheter
+- ✅ Animationer och övergångar
+- ✅ Early access registrering
+- ✅ Feedback-system
+- ✅ SEO-optimerad
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load fonts.
 
 ## Learn More
 
