@@ -1,7 +1,9 @@
 "use client";
 
-import { Github, Twitter, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Twitter, Linkedin, Mail, Heart, Cookie } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { resetCookieConsent } from "./CookieConsent";
 
 const navigation = {
   product: [
@@ -15,9 +17,8 @@ const navigation = {
     { name: "Karriär", href: "#" },
   ],
   legal: [
-    { name: "Integritetspolicy", href: "#" },
+    { name: "Integritetspolicy", href: "/integritetspolicy" },
     { name: "Användarvillkor", href: "#" },
-    { name: "Cookies", href: "#" },
   ],
   social: [
     {
@@ -45,6 +46,10 @@ const navigation = {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const handleCookieSettings = () => {
+    resetCookieConsent();
+  };
 
   return (
     <footer className="bg-slate-900 text-slate-300">
@@ -110,30 +115,49 @@ export default function Footer() {
               {navigation.company.map((item) => (
                 <li key={item.name}>
                   <a
-                  href={item.href}
-                  className="text-sm text-slate-400 hover:text-white transition-colors"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Legal */}
-        <div>
-          <h3 className="text-white font-semibold mb-4">Juridiskt</h3>
-          <ul className="space-y-3">
-            {navigation.legal.map((item) => (
-              <li key={item.name}>
-                <a
-                  href={item.href}
-                  className="text-sm text-slate-400 hover:text-white transition-colors"
+                    href={item.href}
+                    className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     {item.name}
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="text-white font-semibold mb-4">Juridiskt</h3>
+            <ul className="space-y-3">
+              {navigation.legal.map((item) => (
+                <li key={item.name}>
+                  {item.href.startsWith("/") ? (
+                    <Link
+                      href={item.href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="text-sm text-slate-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  )}
+                </li>
+              ))}
+              {/* Cookie Settings Button */}
+              <li>
+                <button
+                  onClick={handleCookieSettings}
+                  className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2"
+                >
+                  <Cookie className="w-4 h-4" />
+                  Cookie-inställningar
+                </button>
+              </li>
             </ul>
           </div>
         </div>
