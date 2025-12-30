@@ -21,8 +21,8 @@ export default function GoogleAnalytics({ consentGiven }: GoogleAnalyticsProps) 
     }
   }, [consentGiven]);
 
-  // Don't render anything if consent hasn't been given
-  if (!shouldLoad || GA_MEASUREMENT_ID === "G-L2K6QSQQ41") {
+  // Don't render anything if consent hasn't been given or if GA ID is not configured
+  if (!shouldLoad || !GA_MEASUREMENT_ID) {
     return null;
   }
 
