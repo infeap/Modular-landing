@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ModuleModal, { ModuleData } from "./ModuleModal";
 import FeedbackDialog from "./FeedbackDialog";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 const features: ModuleData[] = [
   {
@@ -188,10 +189,16 @@ export default function Features() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const [feedbackModule, setFeedbackModule] = useState("");
+  const { trackEvent } = useAnalytics();
 
   const handleModuleClick = (feature: ModuleData) => {
     setSelectedModule(feature);
     setIsModalOpen(true);
+    trackEvent("module_click", {
+      event_category: "engagement",
+      event_label: feature.title,
+      module_available: feature.available,
+    });
   };
 
   const handleAskQuestion = (moduleName: string) => {

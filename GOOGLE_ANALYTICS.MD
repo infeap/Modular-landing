@@ -1,4 +1,26 @@
-# Google Analytics – Obligatoriska krav och efterlevnad
+# Google Analytics – Implementation och efterlevnad
+
+## Implementerat i projektet
+
+### Tracking som är aktivt:
+- **Sidvisningar (Page Views)** - Automatisk tracking av alla sidvisningar
+- **Scroll Tracking** - Trackar när användare scrollar 25%, 50%, 75% och 100% av sidan
+- **Click Tracking** - Trackar klick på alla CTA-knappar, navigeringslänkar och moduler
+- **Formulär Tracking** - Trackar när användare skickar formulär (success/error)
+- **Modal Tracking** - Trackar när användare öppnar och interagerar med moduler
+
+### Event-kategorier:
+- `cta` - Call-to-action knappar
+- `navigation` - Navigationslänkar
+- `engagement` - Användare interaktioner (modulklick, frågor, etc.)
+- `form` - Formulärinteraktioner
+
+### Measurement ID:
+Konfigurerat i `.env.local`: `G-L2K6QSQQ41`
+
+---
+
+# Obligatoriska krav och efterlevnad
 
 Följande krav ska alltid uppfyllas vid implementation och användning av Google Analytics i projektet. Kraven är bindande och får inte kringgås.
 

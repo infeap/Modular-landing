@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import { Mail, CheckCircle, AlertCircle, Loader2, Sparkles } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { validateEmail } from "@/lib/utils";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function EarlyAccess() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const { trackFormSubmit } = useAnalytics();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -36,13 +38,16 @@ export default function EarlyAccess() {
         setStatus("success");
         setMessage(data.message || "Tack för ditt intresse! Vi kontaktar dig snart.");
         setEmail("");
+        trackFormSubmit("early_access_form", true);
       } else {
         setStatus("error");
         setMessage(data.error || "Något gick fel. Försök igen senare.");
+        trackFormSubmit("early_access_form", false);
       }
     } catch (error) {
       setStatus("error");
       setMessage("Något gick fel. Kontrollera din internetanslutning.");
+      trackFormSubmit("early_access_form", false);
     }
   };
 

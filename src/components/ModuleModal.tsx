@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, MessageCircle, ExternalLink, Check, Clock } from "lucide-react";
 import Image from "next/image";
 import { LucideIcon } from "lucide-react";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export interface ModuleData {
   icon: LucideIcon;
@@ -27,7 +28,19 @@ interface ModuleModalProps {
 }
 
 export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: ModuleModalProps) {
+  const { trackClick } = useAnalytics();
+
   if (!module) return null;
+
+  const handleAskQuestion = () => {
+    trackClick(`module_ask_question_${module.title}`, "engagement");
+    onAskQuestion(module.title);
+  };
+
+  const handleEarlyAccess = () => {
+    trackClick(`module_early_access_${module.title}`, "cta");
+    onClose();
+  };
 
   return (
     <AnimatePresence>
@@ -204,17 +217,17 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
                   className="flex flex-wrap gap-4"
                 >
                   <button
-                    onClick={() => onAskQuestion(module.title)}
+                    onClick={handleAskQuestion}
                     className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all"
                   >
                     <MessageCircle className="w-5 h-5" />
                     Ställ en fråga om {module.title}
                   </button>
-                  
+
                   {module.available && (
                     <a
                       href="#early-access"
-                      onClick={onClose}
+                      onClick={handleEarlyAccess}
                       className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold hover:border-blue-300 hover:bg-blue-50 transition-all"
                     >
                       <ExternalLink className="w-5 h-5" />

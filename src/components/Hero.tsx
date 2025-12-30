@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function Hero() {
+  const { trackClick } = useAnalytics();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40">
       {/* Header/Navbar */}
@@ -31,14 +33,23 @@ export default function Hero() {
             </span>
           </div>
           <div className="hidden sm:flex items-center gap-6">
-            <a href="#features" className="text-slate-600 hover:text-blue-600 transition-colors font-medium">
+            <a
+              href="#features"
+              onClick={() => trackClick("nav_features", "navigation")}
+              className="text-slate-600 hover:text-blue-600 transition-colors font-medium"
+            >
               Funktioner
             </a>
-            <a href="#faq" className="text-slate-600 hover:text-blue-600 transition-colors font-medium">
+            <a
+              href="#faq"
+              onClick={() => trackClick("nav_faq", "navigation")}
+              className="text-slate-600 hover:text-blue-600 transition-colors font-medium"
+            >
               FAQ
             </a>
             <a
               href="#early-access"
+              onClick={() => trackClick("nav_early_access", "navigation")}
               className="px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
             >
               Early Access
@@ -132,6 +143,7 @@ export default function Hero() {
           >
             <a
               href="#early-access"
+              onClick={() => trackClick("hero_early_access_cta", "cta")}
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold text-lg shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
             >
               Få Early Access
@@ -139,6 +151,7 @@ export default function Hero() {
             </a>
             <a
               href="#features"
+              onClick={() => trackClick("hero_features_cta", "cta")}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-slate-300 text-slate-700 font-semibold text-lg hover:border-blue-500 hover:text-blue-600 transition-all duration-300"
             >
               Se funktioner

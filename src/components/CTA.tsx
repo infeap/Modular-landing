@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export default function CTA() {
+  const { trackClick } = useAnalytics();
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,6 +69,7 @@ export default function CTA() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.a
                 href="#early-access"
+                onClick={() => trackClick("cta_early_access", "cta")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-orange-600 font-semibold text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
@@ -76,6 +79,7 @@ export default function CTA() {
               </motion.a>
               <motion.a
                 href="#features"
+                onClick={() => trackClick("cta_features", "cta")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-white text-white font-semibold text-lg hover:bg-white/10 transition-all duration-300"

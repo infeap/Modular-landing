@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import CookieConsent, { ConsentStatus } from "./CookieConsent";
 import GoogleAnalytics from "./GoogleAnalytics";
+import ScrollTracking from "./ScrollTracking";
 
 const CONSENT_KEY = "modular_cookie_consent";
 
@@ -25,9 +26,12 @@ export default function AnalyticsProvider() {
     <>
       {/* Cookie Consent Banner */}
       <CookieConsent onConsentChange={handleConsentChange} />
-      
+
       {/* Google Analytics - only loads if consent is given */}
       <GoogleAnalytics consentGiven={consentStatus === "accepted"} />
+
+      {/* Scroll Tracking - only active if consent is given */}
+      {consentStatus === "accepted" && <ScrollTracking />}
     </>
   );
 }
