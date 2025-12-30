@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 // IMPORTANT: Replace this with your actual Google Analytics Measurement ID
 // Get it from: Google Analytics > Admin > Data Streams > Your Stream > Measurement ID
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-L2K6QSQQ41";
 
 interface GoogleAnalyticsProps {
   consentGiven: boolean;
@@ -22,7 +22,7 @@ export default function GoogleAnalytics({ consentGiven }: GoogleAnalyticsProps) 
   }, [consentGiven]);
 
   // Don't render anything if consent hasn't been given
-  if (!shouldLoad || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") {
+  if (!shouldLoad || GA_MEASUREMENT_ID === "G-L2K6QSQQ41") {
     return null;
   }
 
