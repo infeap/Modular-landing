@@ -9,12 +9,12 @@ const navigation = {
   product: [
     { name: "Funktioner", href: "#features" },
     { name: "FAQ", href: "#faq" },
-    { name: "Early Access", href: "#early-access" },
+    { name: "Early Access", href: "#intresseanmälan" },
   ],
   company: [
-    { name: "Om oss", href: "#" },
-    { name: "Kontakt", href: "#" },
-    { name: "Karriär", href: "#" },
+    // { name: "Om oss", href: "#" },
+    { name: "Kontakt", href: "#intresseanmälan" },
+    // { name: "Karriär", href: "#" },
   ],
   legal: [
     { name: "Integritetspolicy", href: "/integritetspolicy" },
@@ -74,7 +74,10 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
-              Produktivitetsverktyg för installationsbranschen. Dokumentmallar, kabeldimensioneringar, effektberäkningar och mycket mer.
+            <span className="block text-sm font-semibold text-white mb-1">Observera</span>
+            <span>
+              Modular är i nuläget ett koncept i ett tidigt utvärderingsskede. Informationen på denna sida utgör inte ett erbjudande om produkt eller tjänst. Eventuell vidareutveckling, funktionalitet, prissättning och lansering är villkorad av intresse, återkoppling och framtida beslut.
+            </span>
             </p>
             {/* Social Links */}
             <div className="flex gap-3">

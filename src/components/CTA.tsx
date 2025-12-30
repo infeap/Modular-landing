@@ -60,15 +60,15 @@ export default function CTA() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
               style={{ fontFamily: "var(--font-space-grotesk)" }}
             >
-              Redo att börja?
+              Intresserad av att börja?
             </h2>
             <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Gå med i vår early access och bli en av de första att uppleva framtidens produktivitetsverktyg för elektriker.
+              Gå med i vår intresseundersökning och bli en av de första att få information om och när projektet går vidare.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <motion.a
-                href="#early-access"
+                href="#intresseanmälan"
                 onClick={() => trackClick("cta_early_access", "cta")}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

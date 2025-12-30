@@ -7,35 +7,35 @@ import { useState } from "react";
 const faqs = [
   {
     question: "Vad är Modular?",
-    answer: "Modular är en modulär desktop-applikation utvecklad för installationsbranschen, särskilt elektriker. Vi kombinerar dokumentmallar, kabeldimensioneringar, effektberäkningar, gruppförteckningar och mycket mer i en enda plattform.",
+    answer: "Modular är ett koncept vi undersöker intresset för. Tanken är att det i framtiden skulle kunna bli en modulär applikation riktad mot installationsbranschen, exempelvis entreprenörer och mindre konsultverksamheter.",
   },
   {
     question: "Hur fungerar det modulära systemet?",
-    answer: "Modular är uppbyggt med moduler som du kan köpa och aktivera efter behov. Detta ger dig flexibiliteten att endast betala för de funktioner du faktiskt använder. Börja med grundläggande dokumentmallar och lägg till specialiserade el-moduler när du behöver dem.",
+    answer: "En möjlig inriktning är ett modulbaserat upplägg, där användaren själv väljer vilka funktioner som är relevanta. Detta är dock något vi vill utvärdera tillsammans med branschen innan eventuell utveckling påbörjas.",
   },
   {
-    question: "Vilka el-moduler finns tillgängliga?",
-    answer: "Vi erbjuder moduler för kabeldimensionering enligt SS 436 40 00, effektberäkningar, gruppförteckningar, samt mallar för anbudshandlingar, uppdragsbekräftelser och mycket mer. Fler moduler tillkommer löpande baserat på feedback från elektriker och installatörer.",
+    question: "Vilka moduler kommer att finnas tillgängliga från start?",
+    answer: "Finns det intresse startar vi utvecklingen med de mest efterfrågade modulerna – baserat på feedback från elektriker, installatörer och konsulter. Har ni önskemål? Kontakta oss så utvärderar vi möjligheterna att implementera dem.",
   },
   {
-    question: "Är Modular gratis?",
-    answer: "Vi arbetar för närvarande med prissättningen. Early access-användare kommer att få exklusiva förmåner och rabatter när vi lanserar. Registrera dig för att få mer information!",
+    question: "Vad kommer Modular att kosta?",
+    answer: "I detta tidiga skede när vi endast utför intresseundersökningar så har vi ingen aktuell prissättning. Registrera dig för att hålla dig uppdaterad om utvecklingen!",
   },
   {
     question: "Vilka plattformar stöds?",
-    answer: "Modular fungerar på Windows, macOS och Linux. Vi siktar på att lansera för alla plattformar samtidigt.",
+    answer: "Om projektet realiseras är utgångspunkten att i första hand rikta sig mot Windows, som idag är branschstandard.",
   },
   {
-    question: "Lagras min projektdata lokalt?",
-    answer: "Ja! All din projektdata och beräkningar lagras lokalt på din dator. Vi värdesätter din integritet och säkerhet, så ingen känslig data skickas till våra servrar.",
+    question: "Hur hanteras min projektdata - lokalt eller i molnet?",
+    answer: "En möjlig inriktning är att prioritera lokal lagring av projektdata för att värna om integritet och kontroll. Exakt teknisk lösning är ännu inte fastställd och kommer att avgöras i ett senare skede.",
   },
   {
     question: "Kan jag föreslå nya moduler eller funktioner?",
-    answer: "Absolut! Klicka på feedback-knappen i nedre högra hörnet för att dela dina idéer. Vi älskar att höra från elektriker och installatörer - era förslag hjälper oss att forma produkten.",
+    answer: "Absolut! Klicka på feedback-knappen i nedre högra hörnet för att dela dina idéer. Vi älskar att höra från er! Era förslag hjälper oss att forma produkten.",
   },
   {
     question: "När lanseras Modular?",
-    answer: "Vi är för närvarande i early access-fasen. Registrera din e-post för att få notifikationer om lansering och exklusiv tidig tillgång med förmånliga priser.",
+    answer: "Det finns för närvarande inget lanseringsdatum. Detta är en intresseundersökning där eventuell vidare utveckling sker baserat på intresseanmälningar och feedback.",
   },
 ];
 
@@ -135,7 +135,7 @@ export default function FAQ() {
             Har du fler frågor?
           </p>
           <a
-            href="#early-access"
+            href="#intresseanmälan"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105"
           >
             Registrera dig för early access

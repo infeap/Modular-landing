@@ -48,11 +48,11 @@ export default function Hero() {
               FAQ
             </a>
             <a
-              href="#early-access"
+              href="#intresseanmälan"
               onClick={() => trackClick("nav_early_access", "navigation")}
               className="px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
             >
-              Early Access
+              Anmäl intresse
             </a>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Nu i Early Access</span>
+            <span>Intresseundersökning</span>
           </motion.div>
 
           {/* Heading */}
@@ -114,11 +114,11 @@ export default function Hero() {
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
             <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 bg-clip-text text-transparent">
-              Produktivitet för
+              Produktivitet och verktyg
             </span>
             <br />
             <span className="text-slate-900">
-              installationsbranschen
+            för installationsbranschen
             </span>
           </motion.h1>
 
@@ -142,11 +142,11 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <a
-              href="#early-access"
+              href="#intresseanmälan"
               onClick={() => trackClick("hero_early_access_cta", "cta")}
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold text-lg shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105"
             >
-              Få Early Access
+              Registrera intresseanmälan
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a

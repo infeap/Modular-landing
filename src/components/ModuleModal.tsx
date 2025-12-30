@@ -226,7 +226,7 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
 
                   {module.available && (
                     <a
-                      href="#early-access"
+                      href="#intresseanmälan"
                       onClick={handleEarlyAccess}
                       className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold hover:border-blue-300 hover:bg-blue-50 transition-all"
                     >

@@ -4,7 +4,7 @@ import { existsSync } from "fs";
 import path from "path";
 
 const DATA_DIR = path.join(process.cwd(), "data");
-const EMAILS_FILE = path.join(DATA_DIR, "early-access-emails.json");
+const EMAILS_FILE = path.join(DATA_DIR, "intresseanmälan-emails.json");
 
 interface EmailEntry {
   email: string;
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error processing early access signup:", error);
+    console.error("Error processing intresseanmälan signup:", error);
     return NextResponse.json(
       { error: "Något gick fel. Försök igen senare." },
       { status: 500 }

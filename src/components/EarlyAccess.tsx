@@ -24,7 +24,7 @@ export default function EarlyAccess() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/early-access", {
+      const response = await fetch("/api/intresseanmälan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export default function EarlyAccess() {
   };
 
   return (
-    <section id="early-access" className="py-24 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 relative overflow-hidden">
+    <section id="intresseanmälan" className="py-24 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 opacity-20">
         <motion.div
@@ -104,10 +104,12 @@ export default function EarlyAccess() {
             className="text-4xl sm:text-5xl font-bold text-white mb-6"
             style={{ fontFamily: "var(--font-space-grotesk)" }}
           >
-            Få Early Access
+            Registrera intresseanmälan!
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Bli en av de första att testa Modular. Registrera din e-post så hör vi av oss när vi lanserar.
+          Bli en av de första att anmäla ditt intresse för Modular-konceptet. Registrera din e-postadress så hör vi av oss med infromaton om och när projektet går vidare.
+          <br />
+          Vi skickar inga utskick i onödan – du kommer endast att bli kontaktad vid relevanta uppdateringar kring konceptets eventuella utveckling.
           </p>
 
           {/* Form */}
@@ -182,10 +184,6 @@ export default function EarlyAccess() {
             <div className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4" />
               <span>Avregistrera när som helst</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4" />
-              <span>Exklusiva förmåner</span>
             </div>
           </motion.div>
         </motion.div>
