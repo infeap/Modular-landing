@@ -26,7 +26,7 @@ export default function EarlyAccess() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/api/intresseanmälan", {
+      const response = await fetch("/api/early-access", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

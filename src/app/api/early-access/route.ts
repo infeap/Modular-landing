@@ -1,21 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, readFile, mkdir } from "fs/promises";
-import { existsSync } from "fs";
-import path from "path";
-
-const DATA_DIR = path.join(process.cwd(), "data");
-const EMAILS_FILE = path.join(DATA_DIR, "intresseanmälan-emails.json");
-
-interface EmailEntry {
-  email: string;
-  timestamp: string;
-}
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json();
 
-    // Validate email
     if (!email || typeof email !== "string") {
       return NextResponse.json(
         { error: "E-postadress krävs" },
@@ -31,46 +20,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Ensure data directory exists
-    if (!existsSync(DATA_DIR)) {
-      await mkdir(DATA_DIR, { recursive: true });
-    }
-
-    // Read existing emails or create new array
-    let emails: EmailEntry[] = [];
-    if (existsSync(EMAILS_FILE)) {
-      const data = await readFile(EMAILS_FILE, "utf-8");
-      emails = JSON.parse(data);
-    }
+    const normalizedEmail = email.toLowerCase().trim();
 
     // Check if email already exists
-    if (emails.some((entry) => entry.email === email)) {
+    const { data: existing } = await supabase
+      .from("signup_early_access")
+      .select("id")
+      .eq("email", normalizedEmail)
+      .single();
+
+    if (existing) {
       return NextResponse.json(
         { message: "Du är redan registrerad!" },
         { status: 200 }
       );
     }
 
-    // Add new email
-    emails.push({
-      email,
-      timestamp: new Date().toISOString(),
-    });
+    // Insert new signup
+    const { error } = await supabase
+      .from("signup_early_access")
+      .insert({ email: normalizedEmail });
 
-    // Save to file
-    await writeFile(EMAILS_FILE, JSON.stringify(emails, null, 2));
+    if (error) {
+      throw error;
+    }
 
     return NextResponse.json(
       { message: "Tack för ditt intresse! Vi kontaktar dig snart." },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error processing intresseanmälan signup:", error);
+    console.error("Error processing signup:", error);
     return NextResponse.json(
       { error: "Något gick fel. Försök igen senare." },
       { status: 500 }
     );
   }
 }
-
-

@@ -66,3 +66,4 @@ Gå till http://localhost:3000 och se dina screenshots på sidan! 🎉
 - Aspect ratio 16:9 fungerar bäst
 
 
+
