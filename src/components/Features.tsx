@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FileText, Cable, Zap, Calculator, ListChecks, Shield, Puzzle, Layers, Lock, CheckSquare } from "lucide-react";
+import { FileText, Cable, Zap, Calculator, ListChecks, Lock, CheckSquare, Layers, FileSignature } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import ModuleModal, { ModuleData } from "./ModuleModal";
 import FeedbackDialog from "./FeedbackDialog";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const features: ModuleData[] = [
   {
@@ -18,7 +18,7 @@ const features: ModuleData[] = [
     bgColor: "bg-blue-50",
     available: true,
     screenshot: "/screenshots/dokumentmallar.png",
-    price: "Ingår",
+
     features: [
       "Anbudsmallar",
       "Uppdragsbekräftelser",
@@ -37,7 +37,7 @@ const features: ModuleData[] = [
     bgColor: "bg-slate-50",
     available: true,
     screenshot: "/screenshots/mappstruktur.png",
-    price: "Ingår",
+
     features: [
       "Fördefinierade projektmallar",
       "Skapa egna mappstrukturer",
@@ -56,7 +56,7 @@ const features: ModuleData[] = [
     bgColor: "bg-cyan-50",
     available: true,
     screenshot: "/screenshots/pomodoro.png",
-    price: "Ingår",
+
     features: [
       "Anpassningsbara intervaller",
       "Notifikationer",
@@ -75,7 +75,7 @@ const features: ModuleData[] = [
     bgColor: "bg-emerald-50",
     available: true,
     screenshot: "/screenshots/tasks.png",
-    price: "Ingår",
+
     features: [
       "Skapa & organisera uppgifter",
       "Sätt deadlines",
@@ -94,7 +94,7 @@ const features: ModuleData[] = [
     bgColor: "bg-violet-50",
     available: true,
     screenshot: "/screenshots/kabeldimensionering.png",
-    price: "199 kr",
+
     features: [
       "Beräkning enligt SS 436 40 00",
       "Automatisk korrektionsfaktor",
@@ -113,7 +113,7 @@ const features: ModuleData[] = [
     bgColor: "bg-indigo-50",
     available: false,
     comingSoon: true,
-    price: "249 kr",
+
     features: [
       "Anslutningsvärde-beräkning",
       "Dimensionerande ström",
@@ -132,7 +132,7 @@ const features: ModuleData[] = [
     bgColor: "bg-sky-50",
     available: false,
     comingSoon: true,
-    price: "199 kr",
+
     features: [
       "Automatisk generering",
       "Standardiserade beteckningar",
@@ -142,47 +142,26 @@ const features: ModuleData[] = [
       "Kundanpassning"
     ]
   },
+  {
+    icon: FileSignature,
+    title: "Anbudsgenerator",
+    description: "Skapa professionella anbud snabbt med automatisk prissättning och anpassningsbara mallar.",
+    longDescription: "Effektivisera din anbudsprocess från start till mål. Anbudsgeneratorn hjälper dig att snabbt ta fram korrekta och professionella anbud baserat på projektets omfattning. Med automatisk prissättning, materialdatabas och anpassningsbara mallar sparar du tid och ökar dina chanser att vinna uppdraget.",
+    color: "from-[#2D3A5C] to-[#3B82F6]",
+    bgColor: "bg-slate-50",
+    available: false,
+    comingSoon: true,
+
+    features: [
+      "Anpassningsbara anbudsmallar",
+      "Automatisk prissättning",
+      "Materialdatabas",
+      "Kundregister",
+      "Export till PDF",
+      "Uppföljning & statistik"
+    ]
+  },
 ];
-
-const additionalFeatures = [
-  {
-    icon: Zap,
-    title: "Blixtsnabbt",
-    description: "Desktop-app för maximal prestanda och offline-arbete",
-  },
-  {
-    icon: Shield,
-    title: "Säkert & Privat",
-    description: "All projektdata lagras lokalt på din dator",
-  },
-  {
-    icon: Puzzle,
-    title: "Modulärt system",
-    description: "Köp och aktivera endast de moduler du behöver",
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0, 0, 0.58, 1] as const,
-    },
-  },
-};
 
 export default function Features() {
   const [selectedModule, setSelectedModule] = useState<ModuleData | null>(null);
@@ -214,150 +193,101 @@ export default function Features() {
       <section id="features" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <h2
-              className="text-4xl sm:text-5xl font-bold mb-6"
-              style={{ fontFamily: "var(--font-space-grotesk)" }}
-            >
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                Moduler för elektriker
+          <ScrollReveal className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              <span
+                className="bg-gradient-to-r from-[#2D3A5C] to-[#3B82F6] bg-clip-text text-transparent"
+                style={{ fontFamily: "var(--font-jakarta)" }}
+              >
+                Moduler för{" "}
               </span>
+              <em style={{ fontFamily: "var(--font-playfair)", color: "#2D3A5C" }}>
+                elektriker
+              </em>
               <br />
-              <span className="text-slate-900">
+              <span className="text-slate-900" style={{ fontFamily: "var(--font-jakarta)" }}>
                 och installatörer
               </span>
             </h2>
             <p className="text-lg text-slate-600">
               Från anbudsprocess till färdig entreprenad - allt du behöver i en applikation.
-              <span className="block mt-2 text-blue-600 font-medium">Klicka på en modul för mer information</span>
+              <span className="block mt-2 font-medium" style={{ color: "#3B82F6" }}>Klicka på en modul för mer information</span>
             </p>
-          </motion.div>
+          </ScrollReveal>
 
           {/* Main Features Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative cursor-pointer"
-                onClick={() => handleModuleClick(feature)}
-              >
-                <div className="relative h-full p-8 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300">
-                  {/* Coming Soon Badge */}
-                  {feature.comingSoon && (
-                    <div className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-slate-500 text-white text-xs font-semibold flex items-center gap-1">
-                      <Lock className="w-3 h-3" />
-                      Kommer snart
-                    </div>
-                  )}
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <div
+                  className="group relative cursor-pointer h-full"
+                  onClick={() => handleModuleClick(feature)}
+                >
+                  <div className="relative h-full p-8 rounded-2xl bg-white border border-slate-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+                    {/* Top border hover animation */}
+                    <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2e5c9a] to-[#6a9fe0] origin-left scale-x-[0.3] group-hover:scale-x-100 transition-transform duration-500 ease-out" />
 
-                  {/* Price Badge */}
-                  {feature.price && feature.available && (
-                    <div className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-emerald-500 text-white text-xs font-semibold">
-                      {feature.price}
-                    </div>
-                  )}
-
-                  {/* Icon */}
-                  <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.color} mb-6 ${!feature.available ? 'opacity-60' : ''}`}>
-                    <feature.icon className="w-8 h-8 text-white" />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-2xl font-bold mb-3 text-slate-900" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">
-                    {feature.description}
-                  </p>
-
-                  {/* Screenshot */}
-                  <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 relative">
-                    {feature.available && feature.screenshot ? (
-                      <>
-                        <Image
-                          src={feature.screenshot}
-                          alt={`${feature.title} skärmdump`}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                          }}
-                        />
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                          <span className="text-white font-medium text-sm">Klicka för mer info</span>
-                        </div>
-                      </>
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center relative">
-                        {/* Blurred placeholder för kommande moduler */}
-                        <div className={`${feature.bgColor} p-4 rounded-lg blur-sm`}>
-                          <feature.icon className="w-12 h-12 text-slate-400" />
-                        </div>
-                        {feature.comingSoon && (
-                          <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm">
-                            <div className="text-center">
-                              <Lock className="w-8 h-8 text-slate-400 mx-auto mb-2" />
-                              <p className="text-sm font-semibold text-slate-600">Under utveckling</p>
-                            </div>
-                          </div>
-                        )}
+                    {/* Coming Soon Badge */}
+                    {feature.comingSoon && (
+                      <div className="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-slate-500 text-white text-xs font-semibold flex items-center gap-1">
+                        <Lock className="w-3 h-3" />
+                        Kommer snart
                       </div>
                     )}
-                  </div>
 
-                  {/* Hover Effect Border */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none`} />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                    {/* Icon */}
+                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${feature.color} mb-6 ${!feature.available ? 'opacity-60' : ''}`}>
+                      <feature.icon className="w-8 h-8 text-white" />
+                    </div>
 
-          {/* Additional Features */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {additionalFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="flex items-start gap-4 p-6 rounded-xl bg-slate-50 border border-slate-200"
-              >
-                <div className="flex-shrink-0">
-                  <div className="p-3 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500">
-                    <feature.icon className="w-6 h-6 text-white" />
+                    {/* Content */}
+                    <h3 className="text-2xl font-bold mb-3 text-slate-900" style={{ fontFamily: "var(--font-jakarta)" }}>
+                      {feature.title}
+                    </h3>
+                    <p className="text-slate-600 mb-6 leading-relaxed">
+                      {feature.description}
+                    </p>
+
+                    {/* Screenshot */}
+                    <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 relative">
+                      {feature.available && feature.screenshot ? (
+                        <>
+                          <Image
+                            src={feature.screenshot}
+                            alt={`${feature.title} skärmdump`}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                            }}
+                          />
+                          {/* Hover overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                            <span className="text-white font-medium text-sm">Klicka för mer info</span>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center relative">
+                          <div className={`${feature.bgColor} p-4 rounded-lg blur-sm`}>
+                            <feature.icon className="w-12 h-12 text-slate-400" />
+                          </div>
+                          {feature.comingSoon && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+                              <div className="text-center">
+                                <Lock className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+                                <p className="text-sm font-semibold text-slate-600">Under utveckling</p>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-slate-900 mb-1">
-                    {feature.title}
-                  </h4>
-                  <p className="text-sm text-slate-600">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
+              </ScrollReveal>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 

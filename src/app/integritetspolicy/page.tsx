@@ -233,7 +233,7 @@ export default function Integritetspolicy() {
                 kontakta oss via:
               </p>
               <p className="font-medium">
-                E-post: <a href="mailto:kontakt@modular.se" className="text-blue-600 hover:text-blue-700">kontakt@modular.se</a>
+                E-post: <a href="mailto:modular@duvero.se" className="text-blue-600 hover:text-blue-700">modular@duvero.se</a>
               </p>
             </div>
           </section>

@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, CheckCircle, AlertCircle, Loader2, Sparkles } from "lucide-react";
+import { Mail, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { useState, FormEvent } from "react";
 import { validateEmail } from "@/lib/utils";
 import { useAnalytics } from "@/hooks/useAnalytics";
+import { ScrollReveal } from "./ui/ScrollReveal";
+import { LottieIcon } from "./ui/LottieIcon";
 
 export default function EarlyAccess() {
   const [email, setEmail] = useState("");
@@ -14,7 +16,7 @@ export default function EarlyAccess() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateEmail(email)) {
       setStatus("error");
       setMessage("Vänligen ange en giltig e-postadress");
@@ -52,64 +54,46 @@ export default function EarlyAccess() {
   };
 
   return (
-    <section id="intresseanmälan" className="py-24 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 opacity-20">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"
-        />
-      </div>
+    <section
+      id="intresseanmälan"
+      className="py-24 relative overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #2D3A5C, #1D2A4C)" }}
+    >
+      {/* Subtle radial overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(59,130,246,0.12)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        <ScrollReveal>
           {/* Icon */}
           <motion.div
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm mb-8"
+            className="inline-flex items-center justify-center w-20 h-20 mb-8"
           >
-            <Sparkles className="w-10 h-10 text-white" />
+            <LottieIcon src="/icons/sign-in.json" className="w-20 h-20" trigger="inView" speed={0.5} />
           </motion.div>
 
           {/* Heading */}
           <h2
             className="text-4xl sm:text-5xl font-bold text-white mb-6"
-            style={{ fontFamily: "var(--font-space-grotesk)" }}
+            style={{ fontFamily: "var(--font-jakarta)" }}
           >
-            Registrera intresseanmälan!
+            Registrera{" "}
+            <em style={{ fontFamily: "var(--font-playfair)", color: "#60A5FA" }}>
+              intresseanmälan!
+            </em>
           </h2>
           <p className="text-xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed">
-          Bli en av de första att anmäla ditt intresse för Modular-konceptet. Registrera din e-postadress så hör vi av oss med infromaton om och när projektet går vidare.
+          Modular är ett koncept under tidig utveckling. 
           <br />
-          Vi skickar inga utskick i onödan – du kommer endast att bli kontaktad vid relevanta uppdateringar kring konceptets eventuella utveckling.
+          Anmäl ditt intresse redan nu så kontaktar vi dig när projektet tar nästa steg – med information om vad som byggs, när det lanserar och hur du kan vara med och påverka.
+          <br />
+          Vi värnar om din tid. Du kommer aldrig att få onödiga utskick – endast relevanta uppdateringar när något faktiskt händer.
+          <br />
+          <br />
+          Ange din e-postadress så hör vi av oss när projektet tar nästa steg.
           </p>
 
           {/* Form */}
@@ -123,14 +107,15 @@ export default function EarlyAccess() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="din@email.se"
                   disabled={status === "loading" || status === "success"}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl bg-white text-slate-900 placeholder:text-slate-400 border-0 focus:ring-4 focus:ring-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                  className="w-full pl-12 pr-4 py-4 rounded-lg bg-white text-slate-900 placeholder:text-slate-400 border-0 focus:ring-4 focus:ring-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-lg"
                   required
                 />
               </div>
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="px-8 py-4 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl whitespace-nowrap text-lg"
+                className="px-8 py-4 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl whitespace-nowrap text-lg"
+                style={{ background: "#3B82F6", color: "#ffffff" }}
               >
                 {status === "loading" ? (
                   <>
@@ -170,13 +155,7 @@ export default function EarlyAccess() {
           </form>
 
           {/* Trust indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="mt-12 flex flex-wrap items-center justify-center gap-6 text-white/80 text-sm"
-          >
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-white/80 text-sm">
             <div className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4" />
               <span>Ingen spam</span>
@@ -185,8 +164,8 @@ export default function EarlyAccess() {
               <CheckCircle className="w-4 h-4" />
               <span>Avregistrera när som helst</span>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

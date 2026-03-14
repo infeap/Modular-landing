@@ -81,9 +81,9 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h2 
+                      <h2
                         className="text-3xl font-bold text-white"
-                        style={{ fontFamily: "var(--font-space-grotesk)" }}
+                        style={{ fontFamily: "var(--font-jakarta)" }}
                       >
                         {module.title}
                       </h2>
@@ -106,22 +106,6 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
                   </div>
                 </div>
 
-                {/* Price tag */}
-                {module.price && (
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="absolute top-8 right-16"
-                  >
-                    <div className="bg-white rounded-2xl px-6 py-3 shadow-xl">
-                      <p className="text-xs text-slate-500 uppercase tracking-wide">Pris</p>
-                      <p className="text-2xl font-bold text-slate-900" style={{ fontFamily: "var(--font-space-grotesk)" }}>
-                        {module.price}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
               </div>
 
               {/* Screenshot - overlapping the header */}
@@ -170,7 +154,7 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
                     transition={{ delay: 0.2 }}
                     className="mb-6"
                   >
-                    <h3 className="text-lg font-semibold text-slate-900 mb-3" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-3" style={{ fontFamily: "var(--font-jakarta)" }}>
                       Om modulen
                     </h3>
                     <p className="text-slate-600 leading-relaxed">
@@ -187,7 +171,7 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
                     transition={{ delay: 0.3 }}
                     className="mb-8"
                   >
-                    <h3 className="text-lg font-semibold text-slate-900 mb-4" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4" style={{ fontFamily: "var(--font-jakarta)" }}>
                       Funktioner
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -218,7 +202,8 @@ export default function ModuleModal({ isOpen, onClose, module, onAskQuestion }: 
                 >
                   <button
                     onClick={handleAskQuestion}
-                    className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all"
+                    className="flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold hover:shadow-lg transition-all"
+                    style={{ background: "linear-gradient(135deg, #2D3A5C, #3B82F6)" }}
                   >
                     <MessageCircle className="w-5 h-5" />
                     Ställ en fråga om {module.title}

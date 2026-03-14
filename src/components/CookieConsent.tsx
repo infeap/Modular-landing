@@ -74,7 +74,7 @@ export default function CookieConsent({ onConsentChange }: CookieConsentProps) {
                     <div className="flex-1">
                       <h3 
                         className="text-lg font-bold text-slate-900 mb-2"
-                        style={{ fontFamily: "var(--font-space-grotesk)" }}
+                        style={{ fontFamily: "var(--font-jakarta)" }}
                       >
                         Vi värnar om din integritet
                       </h3>
@@ -89,7 +89,8 @@ export default function CookieConsent({ onConsentChange }: CookieConsentProps) {
                       <div className="flex flex-wrap gap-3">
                         <button
                           onClick={handleAcceptAll}
-                          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all text-sm"
+                          className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-semibold hover:shadow-lg transition-all text-sm"
+                          style={{ background: "linear-gradient(135deg, #2D3A5C, #3B82F6)" }}
                         >
                           <Check className="w-4 h-4" />
                           Acceptera alla
@@ -117,7 +118,7 @@ export default function CookieConsent({ onConsentChange }: CookieConsentProps) {
                   <div className="flex items-center justify-between mb-6">
                     <h3 
                       className="text-lg font-bold text-slate-900"
-                      style={{ fontFamily: "var(--font-space-grotesk)" }}
+                      style={{ fontFamily: "var(--font-jakarta)" }}
                     >
                       Cookie-inställningar
                     </h3>
@@ -165,7 +166,8 @@ export default function CookieConsent({ onConsentChange }: CookieConsentProps) {
                   <div className="flex gap-3">
                     <button
                       onClick={handleSaveSettings}
-                      className="flex-1 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all text-sm"
+                      className="flex-1 px-5 py-2.5 rounded-xl text-white font-semibold hover:shadow-lg transition-all text-sm"
+                      style={{ background: "linear-gradient(135deg, #2D3A5C, #3B82F6)" }}
                     >
                       Spara inställningar
                     </button>

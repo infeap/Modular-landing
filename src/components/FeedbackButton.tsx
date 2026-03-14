@@ -18,7 +18,8 @@ export default function FeedbackButton() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300"
+        className="fixed bottom-6 right-6 z-40 p-4 rounded-full text-white shadow-lg hover:shadow-xl transition-all duration-300"
+        style={{ background: "linear-gradient(135deg, #2D3A5C, #3B82F6)", boxShadow: "0 10px 25px rgba(45, 58, 92, 0.3)" }}
         aria-label="Ge feedback"
       >
         <motion.div

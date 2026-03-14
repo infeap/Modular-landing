@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Twitter, Linkedin, Mail, Heart, Cookie } from "lucide-react";
+import { Mail, Heart, Cookie } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { resetCookieConsent } from "./CookieConsent";
@@ -12,9 +12,7 @@ const navigation = {
     { name: "Early Access", href: "#intresseanmälan" },
   ],
   company: [
-    // { name: "Om oss", href: "#" },
     { name: "Kontakt", href: "#intresseanmälan" },
-    // { name: "Karriär", href: "#" },
   ],
   legal: [
     { name: "Integritetspolicy", href: "/integritetspolicy" },
@@ -22,23 +20,8 @@ const navigation = {
   ],
   social: [
     {
-      name: "Twitter",
-      href: "#",
-      icon: Twitter,
-    },
-    {
-      name: "GitHub",
-      href: "#",
-      icon: Github,
-    },
-    {
-      name: "LinkedIn",
-      href: "#",
-      icon: Linkedin,
-    },
-    {
       name: "Email",
-      href: "mailto:kontakt@modular.se",
+      href: "mailto:modular@duvero.se",
       icon: Mail,
     },
   ],
@@ -49,6 +32,13 @@ export default function Footer() {
 
   const handleCookieSettings = () => {
     resetCookieConsent();
+  };
+
+  const handleScrollLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      window.__lenis?.scrollTo(href, { duration: 1.6 });
+    }
   };
 
   return (
@@ -64,11 +54,11 @@ export default function Footer() {
                 alt="Modular"
                 width={40}
                 height={40}
-                className="w-10 h-10"
+                className="w-10 h-10 brightness-0 invert"
               />
               <span
                 className="text-2xl font-bold text-white"
-                style={{ fontFamily: "var(--font-space-grotesk)" }}
+                style={{ fontFamily: "var(--font-jakarta)" }}
               >
                 Modular
               </span>
@@ -76,7 +66,7 @@ export default function Footer() {
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
             <span className="block text-sm font-semibold text-white mb-1">Observera</span>
             <span>
-              Modular är i nuläget ett koncept i ett tidigt utvärderingsskede. Informationen på denna sida utgör inte ett erbjudande om produkt eller tjänst. Eventuell vidareutveckling, funktionalitet, prissättning och lansering är villkorad av intresse, återkoppling och framtida beslut.
+            Modular är under aktiv utveckling och befinner sig i ett tidigt skede. Information om funktionalitet, prissättning och lansering kan komma att förändras i takt med att produkten utvecklas. Anmäl ditt intresse så håller vi dig uppdaterad när något nytt är på gång.
             </span>
             </p>
             {/* Social Links */}
@@ -85,7 +75,7 @@ export default function Footer() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors"
+                  className="p-2 rounded-lg bg-slate-800 hover:bg-[#2D3A5C] hover:shadow-[0_0_12px_rgba(59,130,246,0.3)] transition-all duration-300"
                   aria-label={item.name}
                 >
                   <item.icon className="w-5 h-5" />
@@ -102,6 +92,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <a
                     href={item.href}
+                    onClick={(e) => handleScrollLink(e, item.href)}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     {item.name}
@@ -119,6 +110,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <a
                     href={item.href}
+                    onClick={(e) => handleScrollLink(e, item.href)}
                     className="text-sm text-slate-400 hover:text-white transition-colors"
                   >
                     {item.name}

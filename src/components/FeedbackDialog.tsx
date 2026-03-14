@@ -99,7 +99,7 @@ export default function FeedbackDialog({ isOpen, onClose, defaultMessage }: Feed
           >
             <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
               {/* Header */}
-              <div className="relative bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-4 text-white">
+              <div className="relative px-5 py-4 text-white" style={{ background: "linear-gradient(135deg, #2D3A5C, #3B82F6)" }}>
                 <button
                   onClick={onClose}
                   className="absolute top-4 right-4 p-2 rounded-lg hover:bg-white/20 transition-colors"
@@ -107,7 +107,7 @@ export default function FeedbackDialog({ isOpen, onClose, defaultMessage }: Feed
                 >
                   <X className="w-5 h-5" />
                 </button>
-                <h2 className="text-xl font-bold" style={{ fontFamily: "var(--font-space-grotesk)" }}>
+                <h2 className="text-xl font-bold" style={{ fontFamily: "var(--font-jakarta)" }}>
                   Dela din feedback
                 </h2>
                 <p className="text-white/90 mt-1">
@@ -230,7 +230,8 @@ export default function FeedbackDialog({ isOpen, onClose, defaultMessage }: Feed
                   <button
                     type="submit"
                     disabled={status === "loading" || status === "success"}
-                    className="flex-1 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-6 py-3 rounded-lg text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    style={{ background: "linear-gradient(135deg, #2D3A5C, #3B82F6)" }}
                   >
                     {status === "loading" ? (
                       <>
