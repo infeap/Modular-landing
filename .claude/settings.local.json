@@ -6,7 +6,8 @@
       "Bash(find:*)",
       "Bash(cd:*)",
       "Bash(npm install:*)",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(git push:*)"
     ]
   }
 }
